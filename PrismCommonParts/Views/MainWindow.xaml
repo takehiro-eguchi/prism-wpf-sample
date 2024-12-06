@@ -5,7 +5,12 @@
         xmlns:views="clr-namespace:PrismCommonParts.Views"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}" Height="350" Width="525" >
-    <Grid>
+    <Window.Resources>
+        <Style TargetType="views:LabelTextBox">
+            <Setter Property="Margin" Value="10,5,10,5" />
+        </Style>
+    </Window.Resources>
+    <Grid HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -14,12 +19,21 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <views:LabelTextBox Grid.Row="0" Grid.Column="0"
-                            Label="ラベル設定用" Text="{Binding LabelText}"/>
-        <views:LabelTextBox Grid.Row="0" Grid.Column="1"
-                            Label="テキスト設定用" Text="{Binding ContentText}" IsReadOnly="True"/>
-        <views:LabelTextBox Grid.Row="1" Grid.Column="0"
-                            Label="{Binding LabelText}" Text="{Binding ContentText}"/>
+        <views:LabelTextBox Grid.Row="0" Grid.Column="0" IsRequred="False"
+                            Label="ラベル設定用" Text="{Binding LabelText, Mode=TwoWay}"/>
+        <views:LabelTextBox Grid.Row="0" Grid.Column="1" IsRequred="False"
+                            Label="テキスト設定用" Text="{Binding ContentText, Mode=OneWay}" IsReadOnly="True"/>
+        <StackPanel Grid.Row="0" Grid.Column="2" Margin="10,5,10,5" Orientation="Horizontal">
+            <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsRequired, Mode=TwoWay}" />
+            <Label VerticalAlignment="Center" Content="必須マーク" />
+        </StackPanel>
+        <Border Grid.Row="1" Grid.ColumnSpan="3"
+                BorderThickness="2" BorderBrush="DimGray" Margin="0,5,0,5"/>
+        <views:LabelTextBox Grid.Row="2" Grid.Column="0"
+                            Label="{Binding LabelText, Mode=OneWay}"
+                            IsRequred="{Binding IsRequired, Mode=OneWay}"
+                            Text="{Binding ContentText, Mode=TwoWay}"/>
     </Grid>
 </Window>

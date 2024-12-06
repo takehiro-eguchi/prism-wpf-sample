@@ -57,7 +57,7 @@ namespace PrismCommonParts.Views
                 nameof(IsRequred),
                 typeof(bool),
                 typeof(LabelTextBox),
-                new PropertyMetadata(false, OnIsRequredChanged));
+                new PropertyMetadata(true, OnIsRequredChanged));
         private static void OnIsRequredChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is LabelTextBox labelTextBox)

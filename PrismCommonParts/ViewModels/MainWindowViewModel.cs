@@ -16,7 +16,7 @@ namespace PrismCommonParts.ViewModels
             get => labelText;
             set => SetProperty(ref labelText, value);
         }
-        private string labelText;
+        private string labelText = "初期値";
 
         public string ContentText
         {
@@ -24,6 +24,13 @@ namespace PrismCommonParts.ViewModels
             set => SetProperty(ref contentText, value);
         }
         private string contentText;
+
+        public bool IsRequired
+        {
+            get => isRequired;
+            set => SetProperty(ref isRequired, value);
+        }
+        private bool isRequired;
 
         public MainWindowViewModel()
         {
