@@ -2,9 +2,24 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:views="clr-namespace:PrismCommonParts.Views"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}" Height="350" Width="525" >
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <views:LabelTextBox Grid.Row="0" Grid.Column="0"
+                            Label="ラベル設定用" Text="{Binding LabelText}"/>
+        <views:LabelTextBox Grid.Row="0" Grid.Column="1"
+                            Label="テキスト設定用" Text="{Binding ContentText}" IsReadOnly="True"/>
+        <views:LabelTextBox Grid.Row="1" Grid.Column="0"
+                            Label="{Binding LabelText}" Text="{Binding ContentText}"/>
     </Grid>
 </Window>
