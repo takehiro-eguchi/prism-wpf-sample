@@ -32,6 +32,20 @@ namespace PrismCommonParts.ViewModels
         }
         private bool isRequired;
 
+        public string ViewBehindLabelValue
+        {
+            get => viewBehindLabelValue;
+            set => SetProperty(ref viewBehindLabelValue, value);
+        }
+        private string viewBehindLabelValue = "2番目のラベル";
+
+        public string ViewBehindTextValue
+        {
+            get => viewBehindTextValue;
+            set => SetProperty(ref viewBehindTextValue, value);
+        }
+        private string viewBehindTextValue = "2番目のテキスト";
+
         public MainWindowViewModel()
         {
 

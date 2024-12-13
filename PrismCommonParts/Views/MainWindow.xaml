@@ -4,14 +4,21 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:views="clr-namespace:PrismCommonParts.Views"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="525" >
+        Title="{Binding Title}" Height="600" Width="525" >
     <Window.Resources>
         <Style TargetType="views:LabelTextBox">
             <Setter Property="Margin" Value="10,5,10,5" />
         </Style>
+        <Style TargetType="Border">
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="DimGray"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+        </Style>
     </Window.Resources>
     <Grid HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -29,11 +36,22 @@
             <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsRequired, Mode=TwoWay}" />
             <Label VerticalAlignment="Center" Content="必須マーク" />
         </StackPanel>
-        <Border Grid.Row="1" Grid.ColumnSpan="3"
-                BorderThickness="2" BorderBrush="DimGray" Margin="0,5,0,5"/>
+        <Border Grid.Row="1" Grid.ColumnSpan="3"/>
         <views:LabelTextBox Grid.Row="2" Grid.Column="0"
                             Label="{Binding LabelText, Mode=OneWay}"
                             IsRequred="{Binding IsRequired, Mode=OneWay}"
                             Text="{Binding ContentText, Mode=TwoWay}"/>
+        <Border Grid.Row="3" Grid.ColumnSpan="3"/>
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" x:Name="ViewBehindLabel" Content="xaml + xaml.cs の部品"/>
+            <views:ViewBehindTextList Grid.Row="1">
+                <views:LabelTextBox Label="1番目ラベル" Text="1番目テキスト"/>
+                <views:LabelTextBox Label="{Binding ViewBehindLabelValue}" Text="{Binding ViewBehindTextValue}"/>
+            </views:ViewBehindTextList>
+        </Grid>
     </Grid>
 </Window>

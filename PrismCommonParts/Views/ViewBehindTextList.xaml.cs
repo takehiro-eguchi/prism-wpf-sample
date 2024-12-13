@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PrismCommonParts.Views
 {
@@ -40,12 +28,39 @@ namespace PrismCommonParts.Views
         private static void OnChildrenChanged(
             DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (d is ViewBehindTextList textList)
+            {
+                // 変更イベントを登録
+                if (textList.Children is ObservableCollection<LabelTextBox> textBoxes)
+                    textBoxes.CollectionChanged += (sender, e) => textList.BuildTextList();
+
+                // 再構築
+                textList.BuildTextList();
+            }
         }
 
         public ViewBehindTextList()
         {
             InitializeComponent();
+
+            // イベントを登録
+            Children.CollectionChanged += (sender, e) => BuildTextList();
+        }
+
+        private void BuildTextList()
+        {
+            // StackPanelのテキストを一度クリア
+            var contentChildren = TextStack.Children;
+            contentChildren.Clear();
+
+            // 追加されたテキストを追加
+            if (Children != null)
+            {
+                foreach (var childText in Children)
+                {
+                    contentChildren.Add(childText);
+                }
+            }
         }
     }
 }
