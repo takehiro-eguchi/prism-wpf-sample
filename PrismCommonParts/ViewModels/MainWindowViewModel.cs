@@ -37,14 +37,28 @@ namespace PrismCommonParts.ViewModels
             get => viewBehindLabelValue;
             set => SetProperty(ref viewBehindLabelValue, value);
         }
-        private string viewBehindLabelValue = "2番目のラベル";
+        private string viewBehindLabelValue = "2番目ラベル";
 
         public string ViewBehindTextValue
         {
             get => viewBehindTextValue;
             set => SetProperty(ref viewBehindTextValue, value);
         }
-        private string viewBehindTextValue = "2番目のテキスト";
+        private string viewBehindTextValue = "2番目テキスト";
+
+        public string CsOnlyLabelValue
+        {
+            get => csOnlyLabelValue;
+            set => SetProperty(ref csOnlyLabelValue, value);
+        }
+        private string csOnlyLabelValue = "2番目ラベル";
+
+        public string CsOnlyTextValue
+        {
+            get => csOnlyTextValue;
+            set => SetProperty(ref csOnlyTextValue, value);
+        }
+        private string csOnlyTextValue = "2番目テキスト";
 
         public MainWindowViewModel()
         {
