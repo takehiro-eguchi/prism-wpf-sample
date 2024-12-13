@@ -105,6 +105,12 @@ namespace PrismCommonParts.Views
         public LabelTextBox()
         {
             InitializeComponent();
+
+            Loaded += (sender, e) =>
+            {
+                // 初期状態では閉じておく
+                OnLabelChanged(this, new());
+            };
         }
     }
 }

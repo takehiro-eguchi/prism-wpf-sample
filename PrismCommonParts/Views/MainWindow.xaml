@@ -22,6 +22,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -47,11 +49,26 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" x:Name="ViewBehindLabel" Content="xaml + xaml.cs の部品"/>
+            <Label Grid.Row="0" Content="xaml + xaml.cs の部品"/>
             <views:ViewBehindTextList Grid.Row="1">
                 <views:LabelTextBox Label="1番目ラベル" Text="1番目テキスト"/>
                 <views:LabelTextBox Label="{Binding ViewBehindLabelValue}" Text="{Binding ViewBehindTextValue}"/>
+                <!-- x:Nameの設定ができない -->
+                <!--<views:LabelTextBox x:Name="ViewBehindTextBox" Label="3番目ラベル" Text="3番目テキスト"/>-->
             </views:ViewBehindTextList>
+        </Grid>
+        <Border Grid.Row="5" Grid.ColumnSpan="3"/>
+        <Grid Grid.Row="6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="xaml + xaml.cs + ViewModel.cs の部品"/>
+            <views:MVVMTextList Grid.Row="1">
+                <views:LabelTextBox Label="1番目ラベル" Text="1番目テキスト"/>
+                <!-- MVVMTextListにとってのDataContextがMVVMTextListになるため、バインドできない -->
+                <views:LabelTextBox Label="{Binding ViewBehindLabelValue}" Text="{Binding ViewBehindTextValue}"/>
+            </views:MVVMTextList>
         </Grid>
     </Grid>
 </Window>
