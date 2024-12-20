@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using PrismCommonParts.ViewModels;
+using System.Windows;
+using System.Windows.Data;
 
 namespace PrismCommonParts.Views
 {
@@ -10,6 +12,16 @@ namespace PrismCommonParts.Views
         public MainWindow()
         {
             InitializeComponent();
+
+            // コードによりBinding
+            // バインディングソースとしてViewModelのプロパティを設定
+            Binding binding = new Binding(
+                nameof(MainWindowViewModel.CsOnlyTextCodeBindValue));
+            binding.Source = DataContext;
+            binding.Mode = BindingMode.TwoWay;  // 双方向
+            // UIコンポーネントのバインディングに登録
+            CsOnlyBindTextBox.SetBinding(
+                LabelTextBox.TextProperty, binding);
         }
     }
 }

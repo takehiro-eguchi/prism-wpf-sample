@@ -4,7 +4,7 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:views="clr-namespace:PrismCommonParts.Views"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="650" Width="525" >
+        Title="{Binding Title}" Height="700" Width="525" >
     <Window.Resources>
         <Style TargetType="views:LabelTextBox">
             <Setter Property="Margin" Value="10,5,10,5" />
@@ -84,6 +84,7 @@
                 <views:LabelTextBox Label="1番目ラベル" Text="1番目テキスト"/>
                 <views:LabelTextBox Label="{Binding CsOnlyLabelValue}" Text="{Binding CsOnlyTextValue}"/>
                 <views:LabelTextBox x:Name="CsOnlyTextBox" Label="3番目ラベル" Text="3番目テキスト"/>
+                <views:LabelTextBox x:Name="CsOnlyBindTextBox" Label="4番目ラベル" />
             </views:CSOnlyTextList>
         </Grid>
     </Grid>

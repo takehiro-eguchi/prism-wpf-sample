@@ -60,9 +60,16 @@ namespace PrismCommonParts.ViewModels
         }
         private string csOnlyTextValue = "2番目テキスト";
 
+        public string CsOnlyTextCodeBindValue
+        {
+            get => csOnlyTextCodeBindValue;
+            set => SetProperty(ref csOnlyTextCodeBindValue, value);
+        }
+        private string csOnlyTextCodeBindValue = "4番目テキスト";
+
         public MainWindowViewModel()
         {
-
+            
         }
     }
 }
