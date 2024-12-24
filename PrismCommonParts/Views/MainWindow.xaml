@@ -68,7 +68,12 @@
             <Label Grid.Row="0" Content="xaml + xaml.cs + ViewModel.cs の部品"/>
             <views:MVVMTextList Grid.Row="1">
                 <views:LabelTextBox Label="1番目ラベル" Text="1番目テキスト"/>
-                <!-- MVVMTextListにとってのDataContextがMVVMTextListになるため、バインドできない -->
+                <!-- 
+                 MainWindowViewModelのViewBehindLabelValueとバインドしようとしているが、
+                 LabelTextBoxのDataContextには親であるMVVMTextListのDataContextが伝播される
+                 MVVMTextListのDataContextであるMVVMTextListViewModelはViewBehindLabelValueプロパティを保持していないため、
+                 バインドできない
+                -->
                 <views:LabelTextBox Label="{Binding ViewBehindLabelValue}" Text="{Binding ViewBehindTextValue}"/>
             </views:MVVMTextList>
         </Grid>
