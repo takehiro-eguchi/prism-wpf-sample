@@ -73,8 +73,13 @@
                  LabelTextBoxのDataContextには親であるMVVMTextListのDataContextが伝播される
                  MVVMTextListのDataContextであるMVVMTextListViewModelはViewBehindLabelValueプロパティを保持していないため、
                  バインドできない
+                 Textの方は、親を辿りMainWindowのDataContextのプロパティを設定しているため、
+                 バインドできる
                 -->
-                <views:LabelTextBox Label="{Binding ViewBehindLabelValue}" Text="{Binding ViewBehindTextValue}"/>
+                <views:LabelTextBox 
+                    Label="{Binding ViewBehindLabelValue}" 
+                    Text="{Binding DataContext.ViewBehindTextValue,
+                            RelativeSource={RelativeSource FindAncestor, AncestorType=views:MainWindow}}"/>
             </views:MVVMTextList>
         </Grid>
         <Border Grid.Row="7" Grid.ColumnSpan="3"/>
