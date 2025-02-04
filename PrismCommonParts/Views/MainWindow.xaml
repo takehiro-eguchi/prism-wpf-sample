@@ -90,7 +90,7 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="cs のみの部品"/>
             <views:CSOnlyTextList Grid.Row="1">
-                <!-- 全部できる -->
+                <!-- ↓↓↓ テキストのコレクションを内包できる ↓↓↓ -->
                 <views:LabelTextBox Label="1番目ラベル" Text="1番目テキスト"/>
                 <views:LabelTextBox Label="{Binding CsOnlyLabelValue}" Text="{Binding CsOnlyTextValue}"/>
                 <views:LabelTextBox x:Name="CsOnlyTextBox" Label="3番目ラベル" Text="3番目テキスト"/>
